@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  test_mm:
+    image: mattermost/mattermost-preview:6.5.0
+    container_name: test_mm
+    ports: 
+    - "8065:8065"
+  postgres:
+    image: postgres:14.3
+    container_name: postgres
+    environment:
+        POSTGRES_USER: "mattermost"
+        POSTGRES_PASSWORD: "secret"
+    ports:
+      - "5432:5432"
+
+

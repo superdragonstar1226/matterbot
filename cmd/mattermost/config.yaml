@@ -1,0 +1,38 @@
+
+# mattermost configurations
+mattermost:
+  user_email: "aatrushkevich+3@sfxdx.com"
+  user_password: "qwerty"
+  user_name: "Testuser4"
+  team_name: "Test"
+  server_address: "http://localhost:8065"
+  server_ws_address: "WS://localhost:8065"
+  time_before_notification: "9h"
+  report_file_name: "Report_user_data.json"
+  help: "Здесь будет список команд"
+  noreport: "Вы не написали отчет!"
+  start: "Хорошего дня!"
+  finish: "Отчет успешно создан!"
+  reportremind: "не забудьте написать отчет!"
+  noapikey: "Чтобы создать отчет, необходимо ввести ваш апи-ключ для redmine(команда '!апиключ')"
+
+
+db:
+  url: "postgresql://mattermost:secret@localhost:5432/mattermost?sslmode=disable"
+
+redmine:
+  Host: "https://redmine.sfxdx.com"
+  api_key: "e4a6852ceeb126a9a7d387d394c44dd4210da02b"
+  Login: "mbot"
+  Password: "mbot123QWE"
+
+
+logger:
+  opentracing:
+    service_name: "mattermostbot"
+
+
+# login must be the same for redmain and mattermost. 
+# Id - redmine user id 
+# Login/id:
+
