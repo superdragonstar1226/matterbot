@@ -6,73 +6,73 @@
  go run main.go
  ```
 
-## Команды
- - !помощь - выдает список команд
- - !старт - начинает отчет времени
- - !отчет - следующее сообщение будет распознанно как текст отчета 
- - !конец - останавливает таймер, записывает данные в отчет\
+## Teams
+ - !help - displays a list of commands
+ - !start - starts time reporting
+ - !report - the next message will be recognized as report text 
+ - !end - stops the timer, writes data to the report\
 
 ## Config discription:  
-"USER_EMAIL"   : email для логина бота\
-"USER_PASSWORD": пароль для логина бота\
-"USER_NAME"    : Имя бота\
-"TEAM_NAME"    : Имя команды (воркспейса)\
-"SERVER_ADRES" : адрес сервера\
-"SERVER_WS_ADDRESS": адрес веб-сокета\
-"TIME_BEFORE_NOTIFICATION": время перед отправкой уведомления о ненаписанном отчете\
+"USER_EMAIL"   : 
+"USER_PASSWORD": 
+"USER_NAME"    : 
+"TEAM_NAME"    : 
+"SERVER_ADRES" : 
+"SERVER_WS_ADDRESS": 
+"TIME_BEFORE_NOTIFICATION": 
 
-# Файл отчета содержит:
-- имя пользователя (заголовок)
-- время начала работы
-- текст отчета
-- время завершения работы
+# The report file contains:
+- username (title)
+- start time
+- report text
+- shutdown time
 
 # TODOs
-- Добавление глобального логгера (врап zap-error, вынести конфиги логгера в конфигурационный файл), применять к сорцам, тестам етц.
-- Разбить базовую бизнес-логику по пакетам. Важно: комменты по возможности.
+- Adding a global logger (wrap zap-error, put logger configs into a configuration file), apply to sources, tests, etc.
+- Break down core business logic into packages. Important: comments whenever possible.
 
-`Пример`: 
+`Example`:
 ```go
 // CreateEntity parse and creates new entity instance
 // and write it to database.
 func CreateEntity() {}
 ```
-- Создание, коннект к базе для хранения репортов бота.
-Опционально: хранить репорты и в *.json
-Как пример:
-таблица репортов
-таблица юзеров (привязка юзер-репорт)
-- Создание пакета mattermost (слежебные методы, бизнес-логика етц)
-- Поднятие `http-сервера` (если нужен - соотнести с `тз`, документацией mattermost API етц)
-- По документации `mattermost API`: исследовать вопрос аутентификации (bearer token) и какие методы необходимы.
-- `Makefile`: по мере необходимости доработать пайплайн билда, логирования. Включает билд и старт всех докер-контейнеров, создание и дроп баз данных, применение и откат миграций.
-билд проекта, служебные комманды
-- Для каждого пакета из вышеперечисленных написание `unit-тестов` (Пример в `pkg/mattermost`)
+- Creation, connection to the database for storing bot reports.
+Optionally: store reports in *.json
+As an example:
+report table
+users table (user-report binding)
+- Creation of the mattermost package (tracking methods, business logic, etc.)
+- Raising the `http-server` (if needed, correlate with `ts`, documentation of the most important API ETC)
+- According to the `mattermost API` documentation: research the issue of authentication (bearer token) and what methods are needed.
+- `Makefile`: modify the build pipeline and logging as necessary. Includes building and starting all docker containers, creating and dropping databases, applying and rolling back migrations.
+project build, service commands
+- For each package from the above, writing `unit tests` (Example in `pkg/mattermost`)
 
-`Пример`:
+`Example`:
 ```go
 func someMethod() {}
 
 func Test_someMethod(t *testing.T) {}
 ```
 
-- Посмотреть работу с `database/sql` для вз-ия с бд.
+- View work with `database/sql` for accessing from a database.
 
-- Изучить по возможности [migrate-tool](https://github.com/golang-migrate/migrate)
+- Study as much as possible [migrate-tool](https://github.com/golang-migrate/migrate)
 
-### Команды бота	
+### Bot commands	
 
-- `!План`=старт
+- `!Plan`=start
 
-```триггерит таймер```
+```triggers the timer```
 
-- `!Отчет`=стоп
+- `!Report`=stop
 
 ```command description``` 
-```триггерит остановку таймер, запись => redmine```
+```trigger stop timer, record => redmine```
 
 - `!help` = help list
 
 - `!unknown` = default
 
-```игнор/skip/unknown command```
+```ignore/skip/unknown command```
